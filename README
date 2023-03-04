@@ -1,0 +1,137 @@
+Haley Slaney
+Homework 4
+
+########################################################################################################################
+Inspiration:
+I truly enjoy everything about Spotify. Some of my favorites include:
+- ability to track all the songs I play, which ones I skip
+- ability to recommend songs based off what I have played (also most likely on what similar listeners like and I'm sure
+many other things)
+- ability to filter my liked songs based off a certain mood
+- ability to create many playlists for me based off different moods (ex: Happy Mix), different activities (ex: Running
+Mix), and different events/days (ex: Valentine's Day Mix)
+- of course, I really enjoy the end of the year which shows my favorite songs, time listened, and many fun facts
+
+As a result, I was inspired to try to come up with my own algorithm to determine the mood of a song and
+display goofy information/descriptions about it.
+
+########################################################################################################################
+Description:
+As mentioned, this is designed to be an algorithm that can detect the mood of a song. Although, I originally wanted to
+be able to detect the mood of ANY song, I was unable to set up what would be required to do that (problem described
+below). Thus, I settled with determining the mood of 10 Taylor Swift songs.
+
+How to Run:
+Run the class, spotify.py
+
+What it does:
+In this implementation, I give a welcome to the user and ask them to type in a song (note: if there is a typo, I will
+tell the user, and have them try again). Meanwhile, the song, Are You Ready For It plays.
+
+With their input, I pass it into an Analyze object which gets me the percentage of the emotions of the songs. As
+well as a noun, verb, and adjective in the song. As well as a word that describes the key of the song.
+
+I display sentences with these words and wait a few seconds.
+The fourth sentence, has most importantly, its giving....
+"Its giving" is a popular phrase being used by young people to describe the vibe of something in a goofy way.
+Then, I clear the page.
+I play the song typed in by the user.
+
+On the new page, the background is chosen based off of the emotion of the song.
+crimson = angry
+maroon = angry and sad
+midnight blue = sad
+majenta = happy
+
+Then, I create a diamond of circles that give the illusion that it is an animation by using time.sleep in between
+changing the colors of the circles.
+After 6 (counting the first color) changes of color, the album cover or cool photo of Taylor relevant to the song
+title is displayed.
+The diamond will change colors 15 times.
+At that point, a message telling the user to click any key to exit will appear.
+If they do this, the program will exit.
+After usually 1 min and 30 seconds, the music will stop if the user does not press any key
+
+Please note, the various words in each sentence are likely to change each time you run it. So, the output is
+likely to change slightly each time,
+
+
+The Important Stuff - Determining the emotion:
+I recognize that this algorithm would likely not work for all songs. It is a very naive implementation - comparing
+lists and strings for the most part. Additionally, the lists are very much catered to the lyrics of the songs.
+However, it is a fun example of how these algorithms could potentially work in larger settings.
+Undoubetdly, there are many more emotions, words, and keys that need to be analyzed thinking bigger picture.
+
+Learning:
+One issue that I came across was the fact that songs can have multiple emotions. Even when I was coding this, I was
+going back and forth over whether the song was more angry or sad.
+At least in the songs I listened to, the only emotions that seemed to overlap were sad and angry.
+This lead to this chunk of code (lines 97-104 in
+spotify.py):
+ elif song_analysis.percent_angry > 7:
+        difference_angry_sad = abs(song_analysis.percent_angry - song_analysis.percent_sad)
+        if (song_analysis.percent_sad > 6) & (difference_angry_sad < 5):
+            color_for_rest = "maroon"
+            colorforsentences_page2 = "lightgray"
+        else:
+            color_for_rest = angry_color
+            colorforsentences_page2 = "blue"
+
+So, if the song has a high enough angry percentage, it enters the block of code.
+I calculated the difference between angry and sad percents. If there is a high enough percent of sad
+and the percents are close, then the emotion is angry and sad.
+In the case of mad woman (which I believe is sad and angry), the sad percent was just above 6 and the
+angry percent was around 10. Thus, it's angry and sad.
+
+If either of the cases do not hold, then the emotion is just angry.
+In the case of picture to burn (to me, obviously angry or some might say angsty), the sad percent is over 6, but the
+angry percent is 17 (thus the check for the comparison between the percents is crucial).
+
+
+Another issue that I came across was the fact that sometimes lyrics are not enough.
+The song, Better Than Revenge, has fairly low percentages across the board:
+sad = 4.25, happy = 5, angry = 1.8
+However, it's key is bmajor. This key is a very large indicator of the emotion of the song. As can be seen,
+words that describe it are outrage, spiteful, harsh, jealous... Thus, the key must override the percents in
+these scenarios. In the larger picture of things, more research into keys would be necessary for more songs.
+
+
+Side Note:
+  Reasons for choosing songs:
+  The main emotions I analyzed were sad, happy, and angry. Thus, I needed songs with these emotions. Additionally,
+  I tried to choose songs with different keys.
+  Sad:
+    champagne problems, mirrorball
+  Angry:
+    better than revenge, bad blood, picture to burn
+  Sad and Angry:
+    mad woman
+  Happy:
+    bejeweled, lavender haze, fearless, lover
+
+
+Graphics
+I researched many Spotify Wrapped templated to try to replicate their style and overall vibe. I tried to have
+similar colors. Additionally, I copied them by playing music, and often displaying the album cover of a given song.
+
+#######################################################################################################################
+Problems:
+As mentioned, I wanted to be able to have the user type in any song. To do this, I wanted to use the Spotify API.
+I spent at least 7 hours trying to set it up, but I was unsuccessful and ultimately, it lead me here.
+If interested, here are some sources on it:
+https://towardsdatascience.com/extracting-song-data-from-the-spotify-api-using-python-b1e79388d50
+https://developer.spotify.com/documentation/web-api/
+
+How to Improve:
+I know this solution is far from perfect. However, I was really happy to just give it a shot.
+I am planning on spending time over break tinkering with it. If you have any suggestions, please let me know!
+What I don't like about it currently is that it just feels naive, so thinking bigger picture, I may need to take a
+different approach.
+
+Side Note:
+I haven't done a lot of coding in Python, so this was a fun way to learn it!
+I know these songs are not your main choice, but maybe you could incorporate some in you next classes!
+
+More sources:
+For information on music keys and words/phrases that describe keys:
+https://ledgernote.com/blog/interesting/musical-key-characteristics-emotions/
