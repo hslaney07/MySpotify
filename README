@@ -117,7 +117,7 @@ similar colors. Additionally, I copied them by playing music, and often displayi
 #######################################################################################################################
 Problems:
 As mentioned, I wanted to be able to have the user type in any song. To do this, I wanted to use the Spotify API.
-I spent at least 7 hours trying to set it up, but I was unsuccessful and ultimately, it lead me here.
+I spent at least 7 hours trying to set it up, but I was unsuccessful and ultimately, it led me here.
 If interested, here are some sources on it:
 https://towardsdatascience.com/extracting-song-data-from-the-spotify-api-using-python-b1e79388d50
 https://developer.spotify.com/documentation/web-api/
@@ -127,10 +127,6 @@ I know this solution is far from perfect. However, I was really happy to just gi
 I am planning on spending time over break tinkering with it. If you have any suggestions, please let me know!
 What I don't like about it currently is that it just feels naive, so thinking bigger picture, I may need to take a
 different approach.
-
-Side Note:
-I haven't done a lot of coding in Python, so this was a fun way to learn it!
-I know these songs are not your main choice, but maybe you could incorporate some in you next classes!
 
 More sources:
 For information on music keys and words/phrases that describe keys:
